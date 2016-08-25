@@ -1,0 +1,29 @@
+# AWS Singapore location with user qaframework
+#
+brooklyn.catalog:
+  id: aws-sng-centos7
+  name: "AWS Singapore CentOS 7"
+  itemType: location
+  item:
+    type: jclouds:aws-ec2
+    brooklyn.config:
+      region: ap-southeast-1
+      identity: <<ADD HERE>>
+      credential: <<ADD HERE>>
+      installDevUrandom: true
+      minRam: 2000
+      loginUser: centos
+      privateKeyData: |
+        -----BEGIN RSA PRIVATE KEY-----
+       <<ADD HERE>>
+        -----END RSA PRIVATE KEY-----
+      user: amp
+      maxConcurrentMachineCreations: 3
+      machineCreateAttempts: 3
+
+      # name the machine for the QA framework
+      cloudMachineNamer: org.apache.brooklyn.core.location.cloud.names.CustomMachineNamer
+      custom.machine.namer.machine: QA-Scheduler-${entity.displayName}
+
+      openIptables: true
+

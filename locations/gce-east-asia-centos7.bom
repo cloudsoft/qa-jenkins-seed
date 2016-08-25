@@ -1,0 +1,33 @@
+brooklyn.catalog:
+  id: gce-asia-centos7
+  name: "Google Compute Engine East Asia Centos 7"
+  itemType: location
+  item:
+    type: jclouds:google-compute-engine
+    brooklyn.config:
+      imageNameRegex: centos-7.*
+      minRam: 2000
+      installDevUrandom: true
+      region: asia-east1-a
+      identity: <<ADD HERE>>@project.gserviceaccount.com 
+      
+      # Use a pre-created everything open network to avoid quota limitations
+      templateOptions:
+        network: https://www.googleapis.com/compute/v1/projects/jclouds-gce/global/networks/everything
+
+      # name the machine for the QA framework
+      cloudMachineNamer: org.apache.brooklyn.core.location.cloud.names.CustomMachineNamer
+      custom.machine.namer.machine: QA-Scheduler-${entity.displayName}
+      credential: |
+        -----BEGIN PRIVATE KEY-----
+        <<ADD HERE>>
+        -----END PRIVATE KEY-----
+      
+      user: amp
+      privateKeyData: |
+        -----BEGIN RSA PRIVATE KEY-----
+        <<ADD HERE>>
+        -----END RSA PRIVATE KEY-----
+
+      openIptables: true
+

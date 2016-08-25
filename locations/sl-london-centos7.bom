@@ -1,0 +1,26 @@
+brooklyn.catalog:
+  id: sl-lon-centos7
+  name: "Softlayer London CentOS 7"
+  itemType: location
+  item:
+    type: jclouds:softlayer
+    brooklyn.config:
+      region: lon02
+      identity: <<ADD HERE>>
+      credential: <<ADD HERE>>
+      user: amp
+      privateKeyData: |
+        -----BEGIN RSA PRIVATE KEY-----
+        <<ADD HERE>>
+        -----END RSA PRIVATE KEY-----
+        
+      installDevUrandom: true
+      minRam: 2000
+      imageId: CENTOS_7_64
+
+      # name the machine for the QA framework
+      cloudMachineNamer: org.apache.brooklyn.core.location.cloud.names.CustomMachineNamer
+      custom.machine.namer.machine: QA-Scheduler-${entity.displayName}
+
+      openIptables: true
+

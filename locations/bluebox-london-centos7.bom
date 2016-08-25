@@ -1,0 +1,41 @@
+brooklyn.catalog:
+  id: ibm-bluebox-lon-centos7-vpn
+  name: "IBM BlueBox London CentOS 7 (VPN)"
+  itemType: location
+  item:
+    type: jclouds:openstack-nova
+    brooklyn.config:
+      endpoint: https://<<ADD HERE>>.openstack.blueboxgrid.com:5000/v2.0
+      identity:  <<ADD HERE>>
+      credential: "<<ADD HERE>>"
+      jclouds.keystone.credential-type: passwordCredentials
+
+      jclouds.openstack-nova.auto-generate-keypairs: false
+      keyPair: openstack
+      loginUser.privateKeyData: |
+        -----BEGIN RSA PRIVATE KEY-----
+        <<ADD HERE>>
+        -----END RSA PRIVATE KEY-----
+
+      generate.hostname: true
+      installDevUrandom: true
+
+      imageNameRegex: CentOS 7
+      loginUser: centos
+      minRam: 2000
+      privateKeyData: |
+        -----BEGIN RSA PRIVATE KEY-----
+        <<ADD HERE>>
+        -----END RSA PRIVATE KEY-----
+      user: amp
+
+      securityGroups: VPN_local
+      templateOptions:
+        networks: [ "<<ADD HERE>>" ]  #your subnet
+
+      # name the machine for the QA framework
+      cloudMachineNamer: org.apache.brooklyn.core.location.cloud.names.CustomMachineNamer
+      custom.machine.namer.machine: QA-Scheduler-${entity.displayName}
+
+      openIptables: true
+

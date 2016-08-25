@@ -1,0 +1,23 @@
+# AWS Singapore location with user qaframework
+#
+brooklyn.catalog:
+  id: aws-sng-windows
+  name: "AWS Singapore Windows"
+  itemType: location
+  item:
+    type: jclouds:aws-ec2
+    brooklyn.config:
+      region: ap-southeast-1
+      machineCreateAttempts: 3
+      identity: <<ADD HERE>>
+      credential: <<ADD HERE>>
+      imageId: ap-southeast-1/ami-<<ADD HERE>>
+      minRam: 2000
+      osFamily: windows
+      osFamilyOverride: windows
+      useJcloudsSshInit: false
+      inboundPorts: [5985, 3389]
+      templateOptions: { mapNewVolumeToDeviceName: ["/dev/sda1", 60, true] }
+      # name the machine for the QA framework
+      cloudMachineNamer: org.apache.brooklyn.core.location.cloud.names.CustomMachineNamer
+      custom.machine.namer.machine: QA-Scheduler-${entity.displayName}

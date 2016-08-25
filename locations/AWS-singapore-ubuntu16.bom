@@ -1,0 +1,28 @@
+brooklyn.catalog:
+  id: aws-sng-ubuntu16
+  name: "AWS Singapore Ubuntu 16.04 LTS"
+  itemType: location
+  item:
+    type: jclouds:aws-ec2
+    brooklyn.config:
+      region: ap-southeast-1
+      identity: <<ADD HERE>>
+      credential: <<ADD HERE>>
+      installDevUrandom: true
+      minRam: 2000
+      loginUser: ubuntu
+      privateKeyData: |
+        -----BEGIN RSA PRIVATE KEY-----
+        <<ADD HERE>>
+        -----END RSA PRIVATE KEY-----
+      user: amp
+      # Ubuntu 16.04 LTS hvm:ebs-ssd
+      imageId: ap-southeast-1/ami-<<ADD HERE>>
+      maxConcurrentMachineCreations: 3
+      machineCreateAttempts: 3
+
+      # name the machine for the QA framework
+      cloudMachineNamer: org.apache.brooklyn.core.location.cloud.names.CustomMachineNamer
+      custom.machine.namer.machine: QA-Scheduler-${entity.displayName}
+
+      openIptables: true
