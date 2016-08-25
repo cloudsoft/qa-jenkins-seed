@@ -6,7 +6,7 @@
     "uri": "https://github.com/brooklyncentral/brooklyn-tomcat-7-server.git",
     "testPath" : "catalog.tests.bom",
     "tags": ["latest", "AMP-3.2.0"],
-    "clouds": ["bluebox-london", "bluebox-london-centos"],
+    "clouds": ["bluebox-london-centos"],
     "triggers": ["pr", "nightly"]
   },{
     "author": "brooklyncentral",
@@ -15,7 +15,7 @@
     "uri": "https://github.com/brooklyncentral/brooklyn-mongodb-server.git",
     "testPath" : "catalog.tests.bom",
     "tags": ["latest", "AMP-3.2.0"],
-    "clouds": ["bluebox-london", "bluebox-london-centos"],
+    "clouds": ["bluebox-london-centos"],
     "triggers": ["pr", "nightly"]
   },{
     "author": "brooklyncentral",
@@ -24,7 +24,7 @@
     "uri": "https://github.com/brooklyncentral/brooklyn-apache-cassandra-node.git",
     "testPath" : "catalog.tests.bom",
     "tags": ["latest", "AMP-3.2.0"],
-    "clouds": ["bluebox-london", "bluebox-london-centos"],
+    "clouds": ["bluebox-london-centos"],
     "triggers": ["pr", "nightly"]
   },{
     "author": "brooklyncentral",
@@ -33,7 +33,7 @@
     "uri": "https://github.com/brooklyncentral/brooklyn-mysql-node.git",
     "testPath" : "catalog.tests.bom",
     "tags": ["latest", "AMP-3.2.0"],
-    "clouds": ["bluebox-london", "bluebox-london-centos"],
+    "clouds": ["bluebox-london-centos"],
     "triggers": ["pr", "nightly"]
   },{
     "author": "brooklyncentral",
@@ -42,7 +42,7 @@
     "uri": "https://github.com/brooklyncentral/brooklyn-redis-server.git",
     "testPath" : "catalog.tests.bom",
     "tags": ["latest", "AMP-3.2.0"],
-    "clouds": ["bluebox-london", "bluebox-london-centos"],
+    "clouds": ["bluebox-london-centos"],
     "triggers": ["pr", "nightly"]
   },{
     "author": "brooklyncentral",
@@ -51,7 +51,7 @@
     "uri": "https://github.com/brooklyncentral/brooklyn-rabbitmq-broker.git",
     "testPath" : "catalog.tests.bom",
     "tags": ["latest", "AMP-3.2.0"],
-    "clouds": ["bluebox-london", "bluebox-london-centos"],
+    "clouds": ["bluebox-london-centos"],
     "triggers": ["pr", "nightly"]
   },{
     "author": "brooklyncentral",
@@ -60,7 +60,7 @@
     "uri": "https://github.com/brooklyncentral/brooklyn-tomcat-8-server.git",
     "testPath" : "catalog.tests.bom",
     "tags": ["latest", "AMP-3.2.0"],
-    "clouds": ["bluebox-london", "bluebox-london-centos"],
+    "clouds": ["bluebox-london-centos"],
     "triggers": ["pr", "nightly"]
   },{
     "author": "brooklyncentral",
@@ -69,7 +69,7 @@
     "uri": "https://github.com/brooklyncentral/brooklyn-jboss-application-server-6.git",
     "testPath" : "catalog.tests.bom",
     "tags": ["latest", "AMP-3.2.0"],
-    "clouds": ["bluebox-london", "bluebox-london-centos"],
+    "clouds": ["bluebox-london-centos"],
     "triggers": ["pr", "nightly"]
   }
 ]
