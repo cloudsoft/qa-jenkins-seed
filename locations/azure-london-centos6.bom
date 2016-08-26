@@ -5,29 +5,19 @@ brooklyn.catalog:
   item:
     type: jclouds:azurecompute
     brooklyn.config:
-      identity: /home/centos/.ssh/azure.p12
-      credential: <<ADD HERE>> 
+      identity: /home/centos/.ssh/<<ADD HERE>>
+      credential: <<ADD HERE>>
       endpoint: https://management.core.windows.net/<<ADD HERE>>
       vmNameMaxLength: 45
       jclouds.azurecompute.operation.timeout: 120000
-      
-      # this line disables an invalid openlogic repo
-      # sudo yum-config-manager --disable openlogic
-      setup.script: data:text/plain;base64,<<ADD HERE>>
 
       regionId: North Europe
       hardwareId: BASIC_A2
-      imageId: 5112500ae3b842c8b9c604889f8753c3__OpenLogic-CentOS-72-20160303/North Europe
+      imageId: 5112500ae3b842c8b9c604889f8753c3__OpenLogic-CentOS-66-20150731/North Europe
       loginUser: qaframework
       installDevUrandom: true
       templateOptions:
         overrideAuthenticateSudo: true
-      
-      privateKeyData: |
-        -----BEGIN RSA PRIVATE KEY-----
-        <<ADD HERE>>
-        -----END RSA PRIVATE KEY-----
-      user: amp
       
       # name the machine for the QA framework
       cloudMachineNamer: org.apache.brooklyn.core.location.cloud.names.CustomMachineNamer

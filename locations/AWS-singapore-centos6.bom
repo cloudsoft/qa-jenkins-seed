@@ -1,26 +1,27 @@
 brooklyn.catalog:
-  id: sl-lon-centos7
-  name: "Softlayer London CentOS 7"
+  id: aws-sng-centos6
+  name: "AWS Singapore CentOS 6"
   itemType: location
   item:
-    type: jclouds:softlayer
+    type: jclouds:aws-ec2
     brooklyn.config:
-      region: lon02
+      region: ap-southeast-1
       identity: <<ADD HERE>>
       credential: <<ADD HERE>>
-      user: amp
+      installDevUrandom: true
+      minRam: 2000
+      loginUser: root
       privateKeyData: |
         -----BEGIN RSA PRIVATE KEY-----
         <<ADD HERE>>
         -----END RSA PRIVATE KEY-----
-        
-      installDevUrandom: true
-      minRam: 2000
-      imageId: CENTOS_7_64
+      user: amp
+      imageId: ap-southeast-1/ami-42bfe910
+      maxConcurrentMachineCreations: 3
+      machineCreateAttempts: 3
 
       # name the machine for the QA framework
       cloudMachineNamer: org.apache.brooklyn.core.location.cloud.names.CustomMachineNamer
       custom.machine.namer.machine: QA-Scheduler-${entity.displayName}
 
       openIptables: true
-

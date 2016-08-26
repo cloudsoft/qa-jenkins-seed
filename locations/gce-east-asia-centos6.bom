@@ -1,11 +1,11 @@
 brooklyn.catalog:
-  id: gce-asia-centos7
-  name: "Google Compute Engine East Asia Centos 7"
+  id: gce-asia-centos6
+  name: "Google Compute Engine East Asia Centos 6"
   itemType: location
   item:
     type: jclouds:google-compute-engine
     brooklyn.config:
-      imageNameRegex: centos-7.*
+      imageNameRegex: centos-6.*
       minRam: 2000
       installDevUrandom: true
       region: asia-east1-a

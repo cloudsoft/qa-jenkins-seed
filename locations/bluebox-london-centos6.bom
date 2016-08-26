@@ -1,13 +1,13 @@
 brooklyn.catalog:
-  id: ibm-bluebox-lon-centos7-vpn
-  name: "IBM BlueBox London CentOS 7 (VPN)"
+  id: ibm-bluebox-lon-centos6-vpn
+  name: "IBM BlueBox London CentOS 6 (VPN)"
   itemType: location
   item:
     type: jclouds:openstack-nova
     brooklyn.config:
       endpoint: https://<<ADD HERE>>.openstack.blueboxgrid.com:5000/v2.0
       identity:  <<ADD HERE>>
-      credential: "<<ADD HERE>>"
+      credential: <<ADD HERE>>
       jclouds.keystone.credential-type: passwordCredentials
 
       jclouds.openstack-nova.auto-generate-keypairs: false
@@ -20,18 +20,19 @@ brooklyn.catalog:
       generate.hostname: true
       installDevUrandom: true
 
-      imageNameRegex: CentOS 7
+      # There are two images named "CentOS 6"; we need the newest so using the explicit imageId§
+      imageId: RegionOne/55e1fcb5-5a74-461c-b4fc-5b14c575b188
       loginUser: centos
       minRam: 2000
       privateKeyData: |
         -----BEGIN RSA PRIVATE KEY-----
         <<ADD HERE>>
-        -----END RSA PRIVATE KEY-----
+        -----END RSA PRIVATE KEY----- 
       user: amp
 
       securityGroups: VPN_local
       templateOptions:
-        networks: [ "<<ADD HERE>>" ]  #your subnet
+        networks: [ "<<ADD HERE>>" ]
 
       # name the machine for the QA framework
       cloudMachineNamer: org.apache.brooklyn.core.location.cloud.names.CustomMachineNamer
