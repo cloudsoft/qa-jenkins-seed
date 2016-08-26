@@ -11,7 +11,7 @@ brooklyn.catalog:
       machineCreateAttempts: 3
       identity: <<ADD HERE>>
       credential: <<ADD HERE>>
-      imageId: ap-southeast-1/ami-<<ADD HERE>>
+      imageId: ap-southeast-1/ami-e113c082
       minRam: 2000
       osFamily: windows
       osFamilyOverride: windows

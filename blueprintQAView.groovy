@@ -30,19 +30,4 @@ listView('Blueprint PR QA Jobs') {
         buildButton()
     }
 }
-listView('Atos Blueprint QA Jobs') {
-    filterBuildQueue()
-    filterExecutors()
-    jobs {
-        regex(/.*Atos-.*/)
-    }
-    columns {
-        status()
-        weather()
-        name()
-        lastSuccess()
-        lastFailure()
-        lastDuration()
-        buildButton()
-    }
 }

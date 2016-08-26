@@ -39,7 +39,7 @@ if (test.triggers.contains("pr")) {
         }
         if (test.triggers.contains("pr")) {
           githubPullRequest{
-            orgWhitelist('Cloudsoft')
+            orgWhitelist('<<ADD HERE>>')
             cron('H/5 * * * *')
             allowMembersOfWhitelistedOrgsAsAdmin()
           }

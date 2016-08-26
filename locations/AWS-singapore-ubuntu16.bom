@@ -17,7 +17,7 @@ brooklyn.catalog:
         -----END RSA PRIVATE KEY-----
       user: amp
       # Ubuntu 16.04 LTS hvm:ebs-ssd
-      imageId: ap-southeast-1/ami-<<ADD HERE>>
+      imageId: ap-southeast-1/ami-e3974880
       maxConcurrentMachineCreations: 3
       machineCreateAttempts: 3
 
