@@ -15,7 +15,6 @@ if (test.triggers.contains("pr")) {
       parameters {
           stringParam('BK_URI', "${BK_URI}", 'Brooklyn URI')
           stringParam('BK_SCHEDULER_APP_ID', "${BK_SCHEDULER_APP_ID}", 'Application ID of the scheduler')
-          stringParam('QA_TEST_PATH', test.testPath, 'Path to the yaml tests')
       }
       axes {
         text('BROOKLYN_TAG', test.brooklynTags)
@@ -69,7 +68,7 @@ if (test.triggers.contains("pr")) {
         shell('mv "${WORKSPACE}/merged.output.bom" "${WORKSPACE}/merged.catalog.bom"')
         shell('export BR_CLI_HOME="${WORKSPACE}"')
         shell('br login ${BK_URI} ${BK_ADMIN_USER} ${BK_ADMIN_PASSWORD}')
-        shell('br application "${BK_SCHEDULER_APP_ID}" effector newTest invoke -P suiteName="'+test.name+'" -P brooklynTag=${BROOKLYN_TAG} -P locationTag=${LOCATION_TAG} -P app=@merged.catalog.bom -P test=@merged.tests.bom > "${WORKSPACE}/blueprint-qa-test-result.json"')
+        shell('br application "${BK_SCHEDULER_APP_ID}" effector newTest invoke -P suiteName="'+test.name+'" -P ampTarget=${BROOKLYN_TAG} -P locationTarget=${LOCATION_TAG} -P app=@merged.catalog.bom -P test=@merged.tests.bom > "${WORKSPACE}/blueprint-qa-test-result.json"')
         shell('cat "${WORKSPACE}/blueprint-qa-test-result.json"')
         shell('cat "${WORKSPACE}/blueprint-qa-test-result.json" | jq .result | grep PASS')
       }
@@ -139,10 +138,10 @@ if (test.triggers.contains("nightly")) {
           }
         shell('mv "${WORKSPACE}/merged.output.bom" "${WORKSPACE}/merged.catalog.bom"')
         shell('export BR_CLI_HOME="${WORKSPACE}"')
-        shell('br login ${BK_URI} ${BK_ADMIN_USER} ${BK_ADMIN_PASSWORD}')
-        shell('br application "${BK_SCHEDULER_APP_ID}" effector newTest invoke -P suiteName="'+test.name+'" -P brooklynTag=${BROOKLYN_TAG} -P locationTag=${LOCATION_TAG} -P app=@merged.catalog.bom -P test=@merged.tests.bom > "${WORKSPACE}/blueprint-qa-test-result.json"')
+        shell('${HOME}/brooklyn-cli/br login ${BK_URI} ${BK_ADMIN_USER} ${BK_ADMIN_PASSWORD}')
+        shell('${HOME}/brooklyn-cli/br application "${BK_SCHEDULER_APP_ID}" effector newTest invoke -P suiteName="'+test.name+'" -P ampTarget=${BROOKLYN_TAG} -P locationTarget=${LOCATION_TAG} -P app=@merged.catalog.bom -P test=@merged.tests.bom > "${WORKSPACE}/blueprint-qa-test-result.json"')
         shell('cat "${WORKSPACE}/blueprint-qa-test-result.json"')
-        shell('cat "${WORKSPACE}/blueprint-qa-test-result.json" | jq .result | grep PASS')
+        shell('cat "${WORKSPACE}/blueprint-qa-test-result.json" | ${HOME}/jq/jq .result | grep PASS')
       }
     }
   }
