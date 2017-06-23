@@ -141,7 +141,7 @@ if (test.triggers.contains("nightly")) {
         shell('${HOME}/brooklyn-cli/br login ${BK_URI} ${BK_ADMIN_USER} ${BK_ADMIN_PASSWORD}')
         shell('${HOME}/brooklyn-cli/br application "${BK_SCHEDULER_APP_ID}" effector newTest invoke -P suiteName="'+test.name+'" -P ampTarget=${BROOKLYN_TAG} -P locationTarget=${LOCATION_TAG} -P app=@merged.catalog.bom -P test=@merged.tests.bom > "${WORKSPACE}/blueprint-qa-test-result.json"')
         shell('cat "${WORKSPACE}/blueprint-qa-test-result.json"')
-        shell('cat "${WORKSPACE}/blueprint-qa-test-result.json" | ${HOME}/jq/jq .result | grep PASS')
+        shell('cat "${WORKSPACE}/blueprint-qa-test-result.json" | jq .result | grep PASS')
       }
     }
   }
